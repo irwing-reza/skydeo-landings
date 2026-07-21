@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "^(Write|Edit)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npm run --silent shape-seo-hook --",
+            "timeout": 10,
+            "statusMessage": "Checking new pages for an SEO brief"
+          }
+        ]
+      }
+    ]
+  }
+}

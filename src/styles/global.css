@@ -1,0 +1,143 @@
+:root {
+	--color-brand-green: #007a62;
+	--color-brand-green-hover: #006b56;
+	--color-brand-green-soft: #edf8f4;
+	--color-brand-purple: #6b63d9;
+	--color-brand-navy: #101828;
+	--color-background: #ffffff;
+	--color-surface: #f9fbf7;
+	--color-text: #101828;
+	--color-text-muted: #536171;
+	--color-border: #d9e1df;
+	--color-focus: #6b63d9;
+	--font-heading: 'Visby', 'Avenir Next', 'Segoe UI', sans-serif;
+	--font-body: 'Open Sans', Inter, system-ui, sans-serif;
+	--container-width: 80rem;
+	--container-padding: clamp(1rem, 4vw, 2rem);
+	--radius-sm: 0.5rem;
+	--radius-md: 0.75rem;
+	--radius-lg: 1.25rem;
+	--shadow-card: 0 1rem 3rem rgb(16 24 40 / 0.08);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	font-family: var(--font-body);
+	color: var(--color-text);
+	background: var(--color-background);
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	min-width: 20rem;
+	min-height: 100vh;
+	line-height: 1.6;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+	font: inherit;
+}
+
+img,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+a {
+	color: var(--color-brand-green);
+	text-underline-offset: 0.2em;
+}
+
+:focus-visible {
+	outline: 3px solid var(--color-focus);
+	outline-offset: 3px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-heading);
+	line-height: 1.12;
+	text-wrap: balance;
+}
+
+p {
+	text-wrap: pretty;
+}
+
+.container {
+	width: min(100% - (2 * var(--container-padding)), var(--container-width));
+	margin-inline: auto;
+}
+
+.eyebrow {
+	margin: 0 0 0.75rem;
+	color: var(--color-brand-green);
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.skip-link {
+	position: fixed;
+	z-index: 100;
+	top: 1rem;
+	left: 1rem;
+	padding: 0.7rem 1rem;
+	border-radius: var(--radius-sm);
+	color: white;
+	background: var(--color-brand-navy);
+	transform: translateY(-200%);
+}
+
+.skip-link:focus {
+	transform: translateY(0);
+}
+
+.status-page {
+	display: grid;
+	min-height: 100vh;
+	place-content: center;
+	padding: var(--container-padding);
+	text-align: center;
+}
+
+.status-page h1 {
+	margin: 0;
+	font-size: clamp(2.5rem, 8vw, 5rem);
+}
+
+.status-page p:last-child {
+	max-width: 36rem;
+	color: var(--color-text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}

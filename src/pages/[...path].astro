@@ -1,0 +1,39 @@
+---
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
+import Layout from '../layouts/Layout.astro';
+import { getPageCandidates, resolvePagePath, resolveSite } from '../lib/domain-routing';
+
+type LandingPageModule = {
+	default: AstroComponentFactory;
+};
+
+const pageModules = import.meta.glob<LandingPageModule>('../domains/*/pages/**/*.astro');
+const site = resolveSite(Astro.url.hostname);
+const pagePath = resolvePagePath(Astro.params.path);
+const moduleKey =
+	site && pagePath ? getPageCandidates(site, pagePath).find((key) => key in pageModules) : undefined;
+const pageModule = moduleKey ? await pageModules[moduleKey]() : undefined;
+const Page = pageModule?.default;
+
+if (!Page) {
+	Astro.response.status = 404;
+}
+---
+
+{
+	Page ? (
+		<Page site={site} path={pagePath} />
+	) : (
+		<Layout
+			title="Landing page not found | Skydeo"
+			description="The requested Skydeo landing page does not exist."
+			noIndex
+		>
+			<main id="main-content" class="status-page">
+				<p class="eyebrow">404</p>
+				<h1>Landing page not found</h1>
+				<p>This hostname or path is not registered in the landing-page project.</p>
+			</main>
+		</Layout>
+	)
+}

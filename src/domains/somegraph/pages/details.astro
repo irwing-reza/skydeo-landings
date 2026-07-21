@@ -1,0 +1,45 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout
+	title="Somegraph details | Skydeo"
+	description="A nested-path example for the Somegraph landing site."
+>
+	<main id="main-content" class="details">
+		<div class="container">
+			<p class="eyebrow">Somegraph</p>
+			<h1>Nested routes work too.</h1>
+			<p>
+				This file lives at <code>domains/somegraph/pages/details.astro</code> and is served from
+				<code>somegraph.skydeo.com/details</code>.
+			</p>
+			<a href="/">Return home</a>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.details {
+		display: grid;
+		min-height: 100vh;
+		place-items: center;
+		background: var(--color-surface);
+	}
+
+	.details .container {
+		max-width: 50rem;
+		padding-block: 5rem;
+	}
+
+	h1 {
+		margin: 0;
+		font-size: clamp(3rem, 8vw, 6rem);
+		letter-spacing: -0.05em;
+	}
+
+	p:not(.eyebrow) {
+		color: var(--color-text-muted);
+		font-size: 1.1rem;
+	}
+</style>

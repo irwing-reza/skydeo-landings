@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shape SEO"
+  short_description: "Turn business goals into focused SEO briefs"
+  default_prompt: "Use $shape-seo to ask me one question and turn my answer into an SEO brief."

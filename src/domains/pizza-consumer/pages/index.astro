@@ -1,0 +1,340 @@
+---
+import { Image } from 'astro:assets';
+import skydeoLogo from '../../../assets/brand/logo.svg';
+import Layout from '../../../layouts/Layout.astro';
+
+const totals = [
+	{ value: '142M', label: 'tracked pizza visits' },
+	{ value: '72M', label: 'unique consumers' },
+	{ value: '78K+', label: 'pizza locations' },
+];
+
+const brands = [
+	{ name: 'Independent restaurants', visits: 89178501, display: '89.2M', locations: '44,618' },
+	{ name: 'Hunt Brothers Pizza', visits: 15368876, display: '15.4M', locations: '8,983' },
+	{ name: "Domino’s", visits: 9293012, display: '9.3M', locations: '6,747' },
+	{ name: 'Pizza Hut', visits: 6608271, display: '6.6M', locations: '5,151' },
+	{ name: 'Little Caesars', visits: 5472938, display: '5.5M', locations: '3,353' },
+	{ name: "Papa Johns", visits: 4475725, display: '4.5M', locations: '2,466' },
+];
+
+const maxBrandVisits = brands[0].visits;
+
+const states = [
+	{ name: 'California', code: 'CA', visits: '7.27M', level: 100 },
+	{ name: 'Texas', code: 'TX', visits: '7.07M', level: 97 },
+	{ name: 'New York', code: 'NY', visits: '6.58M', level: 91 },
+	{ name: 'Pennsylvania', code: 'PA', visits: '5.66M', level: 78 },
+	{ name: 'Florida', code: 'FL', visits: '5.08M', level: 70 },
+	{ name: 'Ohio', code: 'OH', visits: '4.82M', level: 66 },
+];
+
+const months = [
+	{ month: 'Jan', visits: 15.71 }, { month: 'Feb', visits: 16.74 },
+	{ month: 'Mar', visits: 15.24 }, { month: 'Apr', visits: 15.48 },
+	{ month: 'May', visits: 10.14 }, { month: 'Jun', visits: 3.47 },
+	{ month: 'Jul', visits: 9.15 }, { month: 'Aug', visits: 9.73 },
+	{ month: 'Sep', visits: 15.26 }, { month: 'Oct', visits: 16.82 },
+	{ month: 'Nov', visits: 14.5 },
+];
+
+const chartPoints = months.map((item, index) => {
+	const x = (index / (months.length - 1)) * 100;
+	const y = 92 - ((item.visits - 3) / 14) * 72;
+	return `${x.toFixed(1)},${y.toFixed(1)}`;
+}).join(' ');
+
+const markets = [
+	{ rank: '01', city: 'Kansas City', state: 'MO', visits: '1.69M' },
+	{ rank: '02', city: 'New York', state: 'NY', visits: '1.11M' },
+	{ rank: '03', city: 'Gilbertsville', state: 'PA', visits: '918K' },
+	{ rank: '04', city: 'Bronx', state: 'NY', visits: '879K' },
+	{ rank: '05', city: 'Brooklyn', state: 'NY', visits: '769K' },
+	{ rank: '06', city: 'Philadelphia', state: 'PA', visits: '696K' },
+];
+
+const audiences = [
+	{ tag: 'QSR loyalists', title: 'Frequent convenience seekers', copy: 'High-frequency visitors reveal where routine, proximity and value turn a meal into a habit.' },
+	{ tag: 'Family households', title: 'The weeknight decision-makers', copy: 'Household composition and shopping behavior expose the audiences most likely to convert on bundles.' },
+	{ tag: 'Competitive overlap', title: 'Customers already in-market', copy: 'Cross-visitation identifies conquest audiences without relying on broad demographic assumptions.' },
+];
+---
+
+<Layout
+	title="The Pizza Universe, Mapped | 2025 Consumer Intelligence by Skydeo"
+	description="Explore 142 million tracked pizza visits, 72 million consumers, brand rankings, seasonality and audience intelligence in Skydeo’s 2025 report."
+>
+	<Fragment slot="head">
+		<link rel="canonical" href="https://pizza-consumer.skydeo.com/" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="The Pizza Universe, Mapped" />
+		<meta property="og:description" content="142 million visits reveal where, when and why America eats pizza." />
+		<meta property="og:url" content="https://pizza-consumer.skydeo.com/" />
+	</Fragment>
+
+	<header class="site-header">
+		<div class="container site-header__inner">
+			<a class="wordmark" href="https://skydeo.com" aria-label="Skydeo home"><Image src={skydeoLogo} alt="" width={121} height={39} /></a>
+			<nav aria-label="Report navigation">
+				<a href="#findings">Findings</a>
+				<a href="#audiences">Audiences</a>
+				<a href="#methodology">Methodology</a>
+			</nav>
+			<a class="header-cta" href="https://sam.skydeo.com/create-account">Build an audience <span aria-hidden="true">↗</span></a>
+		</div>
+	</header>
+
+	<main id="main-content">
+		<section class="hero">
+			<div class="container hero__grid">
+				<div class="hero__copy">
+					<div class="report-meta"><span>Free intelligence report</span><span>2025 edition · US</span></div>
+					<h1>The pizza universe, <em>mapped.</em></h1>
+					<p>Every month, Skydeo tracks where America eats pizza. This is the full 2025 picture—from foot traffic and brand power to the audiences behind every visit.</p>
+					<div class="actions">
+						<a class="button button--light" href="https://sam.skydeo.com/create-account">Activate these audiences <span aria-hidden="true">→</span></a>
+						<a class="text-link" href="#findings">Read the report <span aria-hidden="true">↓</span></a>
+					</div>
+					<small>No paywall · Powered by Skydeo LocationGraph &amp; ShoppingGraph</small>
+				</div>
+
+				<div class="hero__visual" aria-label="Top pizza visit states, led by California and Texas">
+					<div class="signal-orbit signal-orbit--one"></div>
+					<div class="signal-orbit signal-orbit--two"></div>
+					<div class="pizza-disc">
+						<span class="pizza-disc__label">US pizza signal</span>
+						<strong>142,241,980</strong>
+						<span>visits observed</span>
+					</div>
+					<div class="state-tags" aria-hidden="true">
+						<span class="tag tag--ca">CA <b>7.27M</b></span>
+						<span class="tag tag--tx">TX <b>7.07M</b></span>
+						<span class="tag tag--ny">NY <b>6.58M</b></span>
+					</div>
+				</div>
+			</div>
+			<div class="container hero__stats">
+				{totals.map((stat) => <div><strong>{stat.value}</strong><span>{stat.label}</span></div>)}
+			</div>
+		</section>
+
+		<div class="report-index">
+			<div class="container report-index__inner">
+				<span>Inside the report</span>
+				<a href="#traffic">01 Foot traffic</a>
+				<a href="#brands">02 Brand power</a>
+				<a href="#timing">03 Seasonality</a>
+				<a href="#markets">04 Markets</a>
+				<a href="#audiences">05 Audiences</a>
+			</div>
+		</div>
+
+		<section class="section intro" id="findings">
+			<div class="container intro__grid">
+				<div>
+					<p class="section-number">The big picture</p>
+					<h2>Pizza isn’t one market. It’s millions of local decisions.</h2>
+				</div>
+				<p class="section-lede">The category looks universal from a distance. Up close, it is sharply regional, stubbornly loyal and highly seasonal. Location intelligence turns those patterns into something marketers can act on.</p>
+			</div>
+		</section>
+
+		<section class="section section--cream" id="traffic">
+			<div class="container split-heading">
+				<div><p class="eyebrow">01 · Foot traffic</p><h2>Where the country actually eats pizza</h2></div>
+				<p>California and Texas lead total observed traffic, but the signal is nationwide. Each bar represents tracked 2025 visits.</p>
+			</div>
+			<div class="container state-panel">
+				<div class="signal-field" aria-hidden="true">
+					{Array.from({ length: 42 }).map((_, index) => <span style={`--i:${index}`}></span>)}
+					<div class="signal-field__caption"><b>50 states</b><span>one connected consumer graph</span></div>
+				</div>
+				<ol class="state-list">
+					{states.map((state) => (
+						<li>
+							<span class="state-code">{state.code}</span>
+							<div><span>{state.name}</span><div class="meter"><i style={`width:${state.level}%`}></i></div></div>
+							<strong>{state.visits}</strong>
+						</li>
+					))}
+				</ol>
+			</div>
+		</section>
+
+		<section class="section" id="brands">
+			<div class="container split-heading">
+				<div><p class="eyebrow">02 · Brand power</p><h2>The pizza foot-traffic leaderboard</h2></div>
+				<p>Independent restaurants collectively dominate. Among named chains, Hunt Brothers’ convenience-store footprint creates an outsized national signal.</p>
+			</div>
+			<div class="container brand-chart" aria-label="Pizza brands ranked by tracked visits">
+				<div class="brand-chart__labels"><span>Brand</span><span>2025 tracked visits</span><span>Locations</span></div>
+				{brands.map((brand, index) => (
+					<div class="brand-row">
+						<div class="brand-name"><small>{String(index + 1).padStart(2, '0')}</small><strong>{brand.name}</strong></div>
+						<div class="brand-volume"><div style={`width:${Math.max((brand.visits / maxBrandVisits) * 100, 7)}%`}></div><b>{brand.display}</b></div>
+						<span>{brand.locations}</span>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<section class="section section--dark" id="timing">
+			<div class="container timing-grid">
+				<div class="timing-copy">
+					<p class="eyebrow">03 · Seasonality</p>
+					<h2>When America reaches for a slice</h2>
+					<p>Demand surges early in the year and again in fall. October reached the highest observed volume in this reporting window.</p>
+					<div class="peak"><span>Peak month</span><strong>16.82M</strong><small>October tracked visits</small></div>
+				</div>
+				<div class="line-chart">
+					<div class="line-chart__header"><span>Monthly visits</span><span>Millions</span></div>
+					<svg viewBox="0 0 100 105" role="img" aria-labelledby="season-title season-desc" preserveAspectRatio="none">
+						<title id="season-title">Monthly tracked pizza visits in 2025</title>
+						<desc id="season-desc">Visits start at 15.71 million in January, fall to 3.47 million in June, and peak at 16.82 million in October.</desc>
+						<defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#58d7b7" stop-opacity=".45"/><stop offset="1" stop-color="#58d7b7" stop-opacity="0"/></linearGradient></defs>
+						<polygon points={`0,100 ${chartPoints} 100,100`} fill="url(#area)" />
+						<polyline points={chartPoints} fill="none" stroke="#75e1c6" stroke-width="1.2" vector-effect="non-scaling-stroke" />
+					</svg>
+					<div class="month-labels">{months.map((item) => <span><b>{item.month}</b><small>{item.visits.toFixed(1)}</small></span>)}</div>
+				</div>
+			</div>
+			<div class="container loyalty">
+				<div><p class="eyebrow">Behavior</p><h2>Pizza is a loyalty business.</h2></div>
+				<div class="loyalty__stat"><strong>95.6%</strong><span>visited one pizza brand</span></div>
+				<div class="loyalty__breakdown">
+					<div><span>Loyal · one brand</span><b>68.94M</b></div>
+					<div><span>Switchers · two brands</span><b>3.01M</b></div>
+					<div><span>Multi-brand · three+</span><b>187K</b></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" id="markets">
+			<div class="container split-heading">
+				<div><p class="eyebrow">04 · Geography</p><h2>The local markets driving volume</h2></div>
+				<p>Market-level patterns expose opportunities a national average can’t: store gaps, competitive strongholds and neighborhood-level demand.</p>
+			</div>
+			<div class="container market-grid">
+				{markets.map((market) => (
+					<article><span>{market.rank}</span><div><h3>{market.city}</h3><p>{market.state}</p></div><strong>{market.visits}<small> visits</small></strong></article>
+				))}
+			</div>
+		</section>
+
+		<section class="section section--mint" id="audiences">
+			<div class="container audience-heading">
+				<p class="eyebrow">05 · Audience OS</p>
+				<h2>Know the people behind the places.</h2>
+				<p>Foot traffic tells you what happened. Skydeo’s audience graph connects those visits to affinities, purchase signals and media-ready segments—so insight can become a campaign.</p>
+			</div>
+			<div class="container audience-grid">
+				{audiences.map((audience, index) => (
+					<article>
+						<div class="audience-card__top"><span>{String(index + 1).padStart(2, '0')}</span><i></i></div>
+						<p>{audience.tag}</p><h3>{audience.title}</h3><div class="audience-signal"><span></span><span></span><span></span><span></span><span></span></div><small>{audience.copy}</small>
+					</article>
+				))}
+			</div>
+			<div class="container audience-proof"><strong>28,000+</strong><span>comparison audiences scored against each pizza segment</span><a href="https://sam.skydeo.com/create-account">Explore Audience OS <span aria-hidden="true">→</span></a></div>
+		</section>
+
+		<section class="section activation">
+			<div class="container activation__heading"><p class="eyebrow">From insight to campaign</p><h2>Signals built to move.</h2></div>
+			<div class="container use-cases">
+				<article><span>Conquest competitors</span><strong>+38%</strong><p>average conversion lift</p><small>Reach verified visitors to competing locations across programmatic, social and CTV.</small></article>
+				<article><span>Find the next store</span><strong>3M+</strong><p>locations analyzed</p><small>Compare demand, visitor origin and competitive overlap before choosing a market.</small></article>
+				<article><span>Time seasonal pushes</span><strong>2.1×</strong><p>engagement boost</p><small>Align creative and spend with real demand windows instead of calendar assumptions.</small></article>
+			</div>
+			<p class="container disclaimer">Illustrative outcomes based on Skydeo campaign benchmarks. Results vary by audience, channel and campaign.</p>
+		</section>
+
+		<section class="section methodology" id="methodology">
+			<div class="container methodology__grid">
+				<div><p class="eyebrow">Methodology</p><h2>The data behind the report</h2><p>Aggregated, privacy-conscious location signals are analyzed against Skydeo’s identity and audience graphs. The result is deterministic place visitation, behavioral overlap and activation-ready insight.</p></div>
+				<div class="method-stats">
+					<div><strong>85 TB+</strong><span>queried per analysis</span></div>
+					<div><strong>800M</strong><span>mobile IDs</span></div>
+					<div><strong>3M</strong><span>US locations</span></div>
+					<div><strong>35K</strong><span>standard segments</span></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="final-cta">
+			<div class="container final-cta__inner">
+				<p class="eyebrow">Ready when you are</p>
+				<h2>Your audiences are waiting.<br /><em>Go activate them.</em></h2>
+				<div class="actions"><a class="button button--light" href="https://sam.skydeo.com/create-account">Create a free account <span aria-hidden="true">→</span></a><a class="text-link" href="https://skydeo.com/sam-book-demo/">Book a demo</a></div>
+			</div>
+		</section>
+	</main>
+
+	<footer><div class="container"><a class="wordmark" href="https://skydeo.com" aria-label="Skydeo home"><Image src={skydeoLogo} alt="" width={121} height={39} /></a><p>Consumer intelligence that moves at the speed of culture.</p><small>© 2025 Skydeo. Report data reflects the supplied 2025 analysis window.</small></div></footer>
+</Layout>
+
+<style>
+	:global(body) { background: #f6f3ea; }
+	:global(html) { scroll-padding-top: 5rem; }
+	.site-header { position: sticky; z-index: 20; top: 0; border-bottom: 1px solid rgb(255 255 255 / .12); background: rgb(13 25 34 / .94); backdrop-filter: blur(16px); }
+	.site-header__inner { display: flex; min-height: 4.5rem; align-items: center; justify-content: space-between; gap: 1.5rem; }
+	.wordmark { display: inline-flex; align-items: center; text-decoration: none; }
+	.wordmark :global(img) { width: 6.75rem; height: auto; }
+	nav { display: none; gap: 1.75rem; }
+	nav a { color: rgb(255 255 255 / .7); font-size: .82rem; font-weight: 700; text-decoration: none; }
+	nav a:hover { color: white; }
+	.header-cta { display: inline-flex; align-items: center; gap: .5rem; color: #0d1922; border-radius: 999px; background: #76e0c4; padding: .55rem .9rem; font-size: .78rem; font-weight: 800; text-decoration: none; }
+	.hero { position: relative; overflow: hidden; color: white; background: #0d1922; }
+	.hero::before { position: absolute; width: 44rem; height: 44rem; top: -28rem; left: 35%; border-radius: 50%; background: #0a9172; content: ''; filter: blur(9rem); opacity: .28; }
+	.hero__grid { position: relative; display: grid; min-height: 42rem; align-items: center; gap: 4rem; padding-block: clamp(5rem, 10vw, 8rem); }
+	.report-meta { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 1.5rem; }
+	.report-meta span { padding: .35rem .65rem; border: 1px solid rgb(255 255 255 / .2); border-radius: 999px; color: #b8c8ce; font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+	.report-meta span:first-child { border-color: #63d9bb; color: #75e1c6; }
+	h1 { max-width: 10ch; margin: 0; font-size: clamp(3.7rem, 10vw, 8.2rem); letter-spacing: -.075em; line-height: .88; }
+	h1 em, .final-cta h2 em { color: #75e1c6; font-style: normal; }
+	.hero__copy > p { max-width: 42rem; margin: 1.8rem 0 0; color: #b7c3c8; font-size: clamp(1.05rem, 2vw, 1.28rem); }
+	.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.3rem; margin-top: 2rem; }
+	.button { display: inline-flex; min-height: 3.25rem; align-items: center; gap: 1.2rem; justify-content: center; padding: .75rem 1.15rem; border-radius: .4rem; font-weight: 800; text-decoration: none; transition: transform 180ms ease, background 180ms ease; }
+	.button:hover { transform: translateY(-2px); }
+	.button--light { color: #0d1922; background: #75e1c6; }
+	.button--light:hover { background: #96ecd7; }
+	.text-link { color: white; font-weight: 800; text-decoration: none; }
+	.hero__copy small { display: block; margin-top: 1.4rem; color: #809198; }
+	.hero__visual { position: relative; min-height: 26rem; display: grid; place-items: center; }
+	.signal-orbit { position: absolute; border: 1px solid rgb(117 225 198 / .28); border-radius: 50%; }
+	.signal-orbit--one { width: 25rem; height: 25rem; }
+	.signal-orbit--two { width: 18rem; height: 18rem; border-style: dashed; transform: rotate(22deg); }
+	.pizza-disc { z-index: 2; display: flex; width: 15rem; height: 15rem; flex-direction: column; justify-content: center; padding: 2rem; border: 1px solid rgb(255 255 255 / .25); border-radius: 50%; background: radial-gradient(circle at 35% 25%, #3b5360, #142833 64%); box-shadow: 0 2rem 5rem rgb(0 0 0 / .4); }
+	.pizza-disc__label, .pizza-disc > span:last-child { color: #8ba0a8; font-size: .65rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+	.pizza-disc strong { margin: .6rem 0; font-family: var(--font-heading); font-size: 1.75rem; letter-spacing: -.04em; }
+	.tag { position: absolute; z-index: 3; display: flex; gap: .5rem; padding: .5rem .7rem; border: 1px solid rgb(255 255 255 / .2); border-radius: .3rem; color: #75e1c6; background: rgb(13 25 34 / .88); font-size: .7rem; }
+	.tag b { color: white; }.tag--ca { top: 12%; left: 8%; }.tag--tx { right: 1%; bottom: 19%; }.tag--ny { top: 18%; right: 7%; }
+	.hero__stats { position: relative; display: grid; border-top: 1px solid rgb(255 255 255 / .12); }
+	.hero__stats div { display: flex; align-items: baseline; gap: .65rem; padding: 1.4rem 0; border-bottom: 1px solid rgb(255 255 255 / .12); }
+	.hero__stats strong { font-family: var(--font-heading); font-size: 2rem; letter-spacing: -.04em; }.hero__stats span { color: #90a2a8; font-size: .78rem; }
+	.report-index { border-bottom: 1px solid #d7d3c7; background: #eeeadf; }
+	.report-index__inner { display: flex; overflow-x: auto; align-items: center; gap: 1.6rem; padding-block: 1rem; white-space: nowrap; }
+	.report-index span { color: #7c776d; font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }.report-index a { color: #29323a; font-size: .78rem; font-weight: 700; text-decoration: none; }
+	.section { padding-block: clamp(5rem, 10vw, 9rem); }.section--cream { background: #eeeadf; }.section--mint { background: #dff4eb; }.section--dark { color: white; background: #10242e; }
+	.intro__grid, .split-heading { display: grid; gap: 2rem; }.section-number { margin: 0 0 1rem; color: #087b63; font-size: .73rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+	h2 { margin: 0; font-size: clamp(2.6rem, 6vw, 5rem); letter-spacing: -.06em; line-height: .96; }.intro h2 { max-width: 13ch; }.section-lede, .split-heading > p { max-width: 38rem; margin: 0; align-self: end; color: #606860; font-size: 1.05rem; }
+	.split-heading { margin-bottom: clamp(3rem, 6vw, 5rem); }.split-heading h2 { max-width: 12ch; }.eyebrow { color: #087b63; }.section--dark .eyebrow { color: #75e1c6; }
+	.state-panel { display: grid; overflow: hidden; border: 1px solid #cfcbc0; border-radius: 1rem; background: #f8f5ed; }
+	.signal-field { position: relative; display: grid; min-height: 24rem; grid-template-columns: repeat(7, 1fr); align-content: center; gap: .55rem; overflow: hidden; padding: 3rem; background: #132b35; }
+	.signal-field > span { aspect-ratio: 1; border-radius: 50%; background: #6cdcc0; opacity: calc(.18 + (var(--i) % 6) * .11); transform: scale(calc(.5 + (var(--i) % 4) * .18)); }
+	.signal-field__caption { position: absolute; inset: auto 2rem 2rem; display: flex; flex-direction: column; }.signal-field__caption b { color: white; font-family: var(--font-heading); font-size: 2.5rem; }.signal-field__caption span { color: #8fa2a8; font-size: .8rem; }
+	.state-list { margin: 0; padding: 1rem 1.5rem; list-style: none; }.state-list li { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr) auto; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #dedad0; }.state-list li:last-child { border: 0; }.state-code { color: #087b63; font-size: .75rem; font-weight: 900; }.state-list li > div > span { font-weight: 700; }.state-list strong { font-size: .85rem; }.meter { height: 3px; margin-top: .5rem; background: #ddd8cd; }.meter i { display: block; height: 100%; background: #159b7d; }
+	.brand-chart { border-top: 1px solid #cfcabd; }.brand-chart__labels, .brand-row { display: grid; grid-template-columns: 1fr; gap: .65rem; padding: 1rem 0; border-bottom: 1px solid #d8d3c7; }.brand-chart__labels { display: none; color: #817b70; font-size: .67rem; font-weight: 800; text-transform: uppercase; }.brand-name { display: flex; align-items: center; gap: 1rem; }.brand-name small { color: #999286; }.brand-volume { display: flex; height: 2rem; align-items: center; gap: .8rem; }.brand-volume div { height: 100%; border-radius: .15rem; background: #0b846a; }.brand-volume b { font-size: .82rem; }.brand-row > span { color: #716c63; font-size: .78rem; }
+	.timing-grid { display: grid; gap: 4rem; }.timing-copy > p:not(.eyebrow) { max-width: 31rem; color: #a8b8bc; }.peak { margin-top: 3rem; padding-left: 1rem; border-left: 2px solid #75e1c6; }.peak span, .peak small { display: block; color: #91a4aa; font-size: .7rem; text-transform: uppercase; }.peak strong { display: block; font-family: var(--font-heading); font-size: 3rem; letter-spacing: -.04em; }
+	.line-chart { align-self: end; }.line-chart__header { display: flex; justify-content: space-between; padding-bottom: .8rem; border-bottom: 1px solid rgb(255 255 255 / .15); color: #91a4aa; font-size: .7rem; text-transform: uppercase; }.line-chart svg { width: 100%; height: 18rem; overflow: visible; border-bottom: 1px solid rgb(255 255 255 / .15); }.month-labels { display: grid; grid-template-columns: repeat(11, 1fr); gap: .25rem; padding-top: .7rem; }.month-labels span { display: flex; flex-direction: column; color: #8ca0a6; font-size: .6rem; }.month-labels small { display: none; }
+	.loyalty { display: grid; gap: 2rem; margin-top: 6rem; padding-top: 4rem; border-top: 1px solid rgb(255 255 255 / .15); }.loyalty h2 { max-width: 10ch; }.loyalty__stat strong { display: block; color: #75e1c6; font-family: var(--font-heading); font-size: clamp(4rem, 8vw, 7rem); letter-spacing: -.07em; line-height: 1; }.loyalty__stat span { color: #a5b5ba; }.loyalty__breakdown div { display: flex; justify-content: space-between; gap: 1rem; padding: .75rem 0; border-bottom: 1px solid rgb(255 255 255 / .12); color: #9badb2; font-size: .78rem; }.loyalty__breakdown b { color: white; }
+	.market-grid { display: grid; gap: 1px; border: 1px solid #d5d0c4; background: #d5d0c4; }.market-grid article { display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; padding: 1.5rem; background: #f6f3ea; }.market-grid article > span { color: #0b846a; font-size: .7rem; font-weight: 900; }.market-grid h3 { margin: 0; font-size: 1.35rem; }.market-grid p { margin: .2rem 0 0; color: #7c776d; font-size: .75rem; }.market-grid strong { grid-column: 2; font-family: var(--font-heading); font-size: 2rem; }.market-grid strong small { color: #817b70; font-family: var(--font-body); font-size: .65rem; font-weight: 400; text-transform: uppercase; }
+	.audience-heading { text-align: center; }.audience-heading h2 { max-width: 12ch; margin-inline: auto; }.audience-heading > p:last-child { max-width: 44rem; margin: 1.5rem auto 0; color: #52635d; }.audience-grid { display: grid; gap: 1rem; margin-top: 4rem; }.audience-grid article { padding: 1.5rem; border: 1px solid #acd6ca; border-radius: .7rem; background: rgb(255 255 255 / .5); }.audience-card__top { display: flex; align-items: center; justify-content: space-between; color: #087b63; font-size: .7rem; }.audience-card__top i { width: .55rem; height: .55rem; border-radius: 50%; background: #17a582; box-shadow: 0 0 0 .35rem rgb(23 165 130 / .14); }.audience-grid article > p { margin: 2.5rem 0 .4rem; color: #087b63; font-size: .68rem; font-weight: 800; text-transform: uppercase; }.audience-grid h3 { margin: 0; font-size: 1.55rem; }.audience-grid article > small { display: block; color: #596a64; }.audience-signal { display: flex; align-items: end; gap: .25rem; height: 4rem; margin: 1.5rem 0; }.audience-signal span { width: 20%; height: 30%; background: #1a9b7c; }.audience-signal span:nth-child(2) { height: 62%; }.audience-signal span:nth-child(3) { height: 45%; }.audience-signal span:nth-child(4) { height: 88%; }.audience-signal span:nth-child(5) { height: 70%; }
+	.audience-proof { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 1rem; padding: 1.5rem; border-radius: .7rem; color: white; background: #10242e; }.audience-proof strong { font-family: var(--font-heading); font-size: 2rem; }.audience-proof span { max-width: 18rem; color: #9db0b5; font-size: .75rem; }.audience-proof a { margin-left: auto; color: #75e1c6; font-size: .8rem; font-weight: 800; text-decoration: none; }
+	.activation { background: #f6f3ea; }.activation__heading { margin-bottom: 3rem; }.use-cases { display: grid; border-top: 1px solid #cfcabd; }.use-cases article { padding: 2rem 0; border-bottom: 1px solid #cfcabd; }.use-cases article > span { display: block; color: #087b63; font-size: .7rem; font-weight: 800; text-transform: uppercase; }.use-cases strong { display: block; margin-top: 1.2rem; font-family: var(--font-heading); font-size: 4rem; letter-spacing: -.06em; line-height: 1; }.use-cases p { margin: .2rem 0 1.5rem; font-weight: 800; }.use-cases small { display: block; color: #6f6a61; }.disclaimer { margin-top: 1.5rem; color: #8a8479; font-size: .68rem; }
+	.methodology { background: #e7e2d6; }.methodology__grid { display: grid; gap: 4rem; }.methodology__grid > div:first-child > p:last-child { max-width: 35rem; color: #656158; }.method-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #cfc9bc; }.method-stats div { padding: 1.5rem; background: #f2eee5; }.method-stats strong { display: block; font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: -.06em; }.method-stats span { color: #716c63; font-size: .7rem; text-transform: uppercase; }
+	.final-cta { color: white; background: #087b63; }.final-cta__inner { padding-block: clamp(5rem, 12vw, 9rem); }.final-cta .eyebrow { color: #a2ead8; }.final-cta h2 { max-width: 15ch; font-size: clamp(3rem, 8vw, 7rem); }.final-cta h2 em { color: #0d1922; }.final-cta .button--light { background: white; }.final-cta .text-link { border-bottom: 1px solid rgb(255 255 255 / .5); }
+	footer { color: white; background: #0d1922; }.footer, footer .container { padding-block: 3rem; }.footer p, footer p { max-width: 28rem; color: #8fa0a6; }.footer small, footer small { color: #667a81; }
+	@media (min-width: 42rem) { .hero__stats { grid-template-columns: repeat(3, 1fr); }.hero__stats div { display: block; padding: 1.8rem; border-right: 1px solid rgb(255 255 255 / .12); border-bottom: 0; }.hero__stats div:first-child { padding-left: 0; }.hero__stats strong, .hero__stats span { display: block; }.market-grid { grid-template-columns: 1fr 1fr; }.audience-grid { grid-template-columns: repeat(3, 1fr); }.use-cases { grid-template-columns: repeat(3, 1fr); }.use-cases article { padding: 2rem; border-right: 1px solid #cfcabd; }.use-cases article:first-child { padding-left: 0; }.use-cases article:last-child { border-right: 0; }.brand-chart__labels, .brand-row { grid-template-columns: minmax(12rem, 1fr) minmax(14rem, 2fr) 5rem; align-items: center; }.brand-chart__labels { display: grid; }.brand-row > span { text-align: right; }.month-labels small { display: block; }.loyalty { grid-template-columns: 1fr 1fr; }.loyalty__breakdown { grid-column: 2; } }
+	@media (min-width: 56rem) { nav { display: flex; }.hero__grid { grid-template-columns: minmax(0, 1.15fr) minmax(22rem, .85fr); }.intro__grid, .split-heading { grid-template-columns: 1.2fr .8fr; }.state-panel { grid-template-columns: .85fr 1.15fr; }.timing-grid { grid-template-columns: .75fr 1.25fr; }.loyalty { grid-template-columns: 1fr .8fr 1fr; }.loyalty__breakdown { grid-column: auto; }.market-grid { grid-template-columns: repeat(3, 1fr); }.methodology__grid { grid-template-columns: .9fr 1.1fr; } }
+	@media (max-width: 32rem) { .header-cta span { display: none; }.header-cta { font-size: .7rem; }.hero__visual { min-height: 21rem; transform: scale(.82); }.signal-orbit--one { width: 22rem; height: 22rem; }.report-index__inner { padding-right: 1rem; }.month-labels span:nth-child(even) { visibility: hidden; } }
+</style>

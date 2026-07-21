@@ -1,0 +1,64 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout
+	title="Another One | A second Skydeo landing"
+	description="A second sample page demonstrating isolated subdomain design."
+>
+	<main id="main-content" class="landing">
+		<div class="container landing__content">
+			<p class="eyebrow">Another One</p>
+			<h1>A different page. The same reliable foundation.</h1>
+			<p>
+				This second example proves each domain can carry a distinct composition without duplicating
+				the router, layout accessibility, or brand tokens.
+			</p>
+			<a href="https://skydeo.com">Learn more about Skydeo <span aria-hidden="true">→</span></a>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.landing {
+		display: grid;
+		min-height: 100vh;
+		place-items: end start;
+		padding-block: clamp(5rem, 12vw, 9rem);
+		background:
+			linear-gradient(115deg, rgb(16 24 40 / 0.94), rgb(48 42 103 / 0.88)),
+			var(--color-brand-navy);
+		color: white;
+	}
+
+	.landing__content {
+		max-width: 68rem;
+	}
+
+	.eyebrow {
+		color: #bdb8ff;
+	}
+
+	h1 {
+		max-width: 15ch;
+		margin: 0;
+		font-size: clamp(3.2rem, 9vw, 7.5rem);
+		letter-spacing: -0.06em;
+	}
+
+	p:not(.eyebrow) {
+		max-width: 45rem;
+		color: rgb(255 255 255 / 0.7);
+		font-size: clamp(1.05rem, 2vw, 1.25rem);
+	}
+
+	a {
+		display: inline-flex;
+		gap: 0.55rem;
+		align-items: center;
+		margin-top: 1rem;
+		color: white;
+		font-weight: 700;
+		text-decoration-color: #bdb8ff;
+	}
+</style>

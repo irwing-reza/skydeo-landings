@@ -1,0 +1,18 @@
+{
+  "description": "Require the shape-seo interview before adding an Astro page.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "^(apply_patch|Edit|Write)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npm run --silent shape-seo-hook --",
+            "timeout": 10,
+            "statusMessage": "Checking new pages for an SEO brief"
+          }
+        ]
+      }
+    ]
+  }
+}

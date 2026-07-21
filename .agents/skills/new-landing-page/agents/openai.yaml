@@ -1,0 +1,4 @@
+interface:
+  display_name: "New Landing Page"
+  short_description: "Turn a brief into a committed Skydeo landing page"
+  default_prompt: "Use $new-landing-page to turn my brief into a validated Skydeo landing page."
