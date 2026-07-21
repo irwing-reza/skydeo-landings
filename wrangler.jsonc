@@ -11,6 +11,10 @@
 		{
 			"pattern": "pizza-consumer.skydeo.com",
 			"custom_domain": true
+		},
+		{
+			"pattern": "tacograph.skydeo.com",
+			"custom_domain": true
 		}
 	],
 	"assets": {

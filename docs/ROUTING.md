@@ -11,6 +11,9 @@ Each first-level subdomain maps to a folder under `src/domains`:
 pizza-consumer.skydeo.com/
 -> src/domains/pizza-consumer/pages/index.astro
 
+tacograph.skydeo.com/
+-> src/domains/tacograph/pages/index.astro
+
 future-campaign.skydeo.com/details
 -> src/domains/future-campaign/pages/details.astro
 ```
@@ -33,6 +36,9 @@ request hostname and loads the matching domain folder:
 https://pizza-consumer.skydeo.com/
 -> src/domains/pizza-consumer/pages/index.astro
 
+https://tacograph.skydeo.com/
+-> src/domains/tacograph/pages/index.astro
+
 https://graph-consumer.skydeo.com/
 -> src/domains/graph-consumer/pages/index.astro
 ```
@@ -48,12 +54,16 @@ to `wrangler.jsonc` and the Worker is redeployed.
 
 ## Production scope
 
-`wrangler.jsonc` currently declares one exact Cloudflare Custom Domain:
+`wrangler.jsonc` currently declares two exact Cloudflare Custom Domains:
 
 ```jsonc
 "routes": [
   {
     "pattern": "pizza-consumer.skydeo.com",
+    "custom_domain": true
+  },
+  {
+    "pattern": "tacograph.skydeo.com",
     "custom_domain": true
   }
 ]
