@@ -1,34 +1,36 @@
 {
-	"$schema": "./node_modules/wrangler/config-schema.json",
-	"name": "skydeo-landings",
-	"compatibility_date": "2026-07-20",
-	"compatibility_flags": [
-		"nodejs_compat"
-	],
-	"workers_dev": false,
-	"preview_urls": false,
-	"routes": [
-		{
-			"pattern": "pizza-consumer.skydeo.com",
-			"custom_domain": true
-		},
-		{
-			"pattern": "tacograph.skydeo.com",
-			"custom_domain": true
-		}
-	],
-	"assets": {
-		"binding": "ASSETS",
-		"directory": "./dist"
-	},
-	"observability": {
-		"enabled": true,
-		"logs": {
-			"head_sampling_rate": 1
-		},
-		"traces": {
-			"enabled": true,
-			"head_sampling_rate": 0.01
-		}
-	}
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "skydeo-landings",
+  "compatibility_date": "2026-07-20",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    {
+      "pattern": "landing-mcp.skydeo.com",
+      "custom_domain": true,
+    },
+    {
+      "pattern": "pizza-consumer.skydeo.com",
+      "custom_domain": true,
+    },
+    {
+      "pattern": "tacograph.skydeo.com",
+      "custom_domain": true,
+    },
+  ],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist",
+  },
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "head_sampling_rate": 1,
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.01,
+    },
+  },
 }
